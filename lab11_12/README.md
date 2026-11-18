@@ -13,11 +13,14 @@ The notebooks were run with Python 3.12, PyTorch 2.11, Transformers 4.57.3, Data
 Transfer `eduge_bert_inference.zip` separately and extract it. It contains the fine-tuned Mongolian BERT weights, tokenizer, config, and nine-label mapping. The classifier can run on CPU and does not require the training dataset or retraining.
 
 ```python
-from transformers import pipeline
+from transformers import AutoTokenizer, pipeline
 
+model_dir = "./eduge_bert_final"
+tokenizer = AutoTokenizer.from_pretrained(model_dir, use_fast=False)
 classify = pipeline(
     "text-classification",
-    model="./eduge_bert_final",
+    model=model_dir,
+    tokenizer=tokenizer,
     device=-1,
 )
 print(classify("Монголын шигшээ баг хожлоо.", truncation=True, max_length=256))
