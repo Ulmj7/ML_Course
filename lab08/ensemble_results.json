@@ -1,0 +1,381 @@
+{
+  "environment": {
+    "python": "3.12.16",
+    "numpy": "2.5.4",
+    "scipy": "1.18.1",
+    "scikit_learn": "1.9.1",
+    "matplotlib": "3.11.2",
+    "compute": "cpu"
+  },
+  "part_a_provided_protocol": {
+    "x_test_identical_to_x_train": true,
+    "y_test_identical_to_y_train": true,
+    "reported_train_accuracy": 0.949,
+    "reported_test_accuracy": 0.949
+  },
+  "honest_estimate_on_provided_dataset": {
+    "method": "outer 5-fold CV, StratifiedKFold(shuffle, seed 15), pooled predictions",
+    "table": {
+      "tree": {
+        "in-sample accuracy (as Part A)": 0.911,
+        "honest outer-CV accuracy": 0.897,
+        "optimism": 0.014
+      },
+      "svm": {
+        "in-sample accuracy (as Part A)": 0.949,
+        "honest outer-CV accuracy": 0.942,
+        "optimism": 0.007
+      },
+      "linreg": {
+        "in-sample accuracy (as Part A)": 0.922,
+        "honest outer-CV accuracy": 0.917,
+        "optimism": 0.005
+      },
+      "hard_vote": {
+        "in-sample accuracy (as Part A)": 0.948,
+        "honest outer-CV accuracy": 0.94,
+        "optimism": 0.008
+      },
+      "stack_in_sample": {
+        "in-sample accuracy (as Part A)": 0.949,
+        "honest outer-CV accuracy": 0.942,
+        "optimism": 0.007
+      },
+      "stack_oof": {
+        "in-sample accuracy (as Part A)": 0.949,
+        "honest outer-CV accuracy": 0.942,
+        "optimism": 0.007
+      },
+      "bagging": {
+        "in-sample accuracy (as Part A)": 0.996,
+        "honest outer-CV accuracy": 0.928,
+        "optimism": 0.068
+      },
+      "random_forest": {
+        "in-sample accuracy (as Part A)": 1.0,
+        "honest outer-CV accuracy": 0.93,
+        "optimism": 0.07
+      },
+      "adaboost": {
+        "in-sample accuracy (as Part A)": 0.935,
+        "honest outer-CV accuracy": 0.908,
+        "optimism": 0.027
+      },
+      "gradient_boosting": {
+        "in-sample accuracy (as Part A)": 0.985,
+        "honest outer-CV accuracy": 0.926,
+        "optimism": 0.059
+      }
+    }
+  },
+  "fixed_split": {
+    "seed": 15,
+    "n_pool": 2000,
+    "n_train": 1000,
+    "n_test": 1000,
+    "k_folds": 5,
+    "table": {
+      "majority class (baseline)": {
+        "family": "baseline",
+        "train_acc": 0.502,
+        "test_acc": 0.502,
+        "ci_low": 0.471062193348,
+        "ci_high": 0.532922499618,
+        "test_errors": 498
+      },
+      "tree": {
+        "family": "single: decision tree, depth 3",
+        "train_acc": 0.841,
+        "test_acc": 0.85,
+        "ci_low": 0.826531341573,
+        "ci_high": 0.870789927487,
+        "test_errors": 150
+      },
+      "svm": {
+        "family": "single: SVC (RBF, defaults)",
+        "train_acc": 0.892,
+        "test_acc": 0.898,
+        "ci_low": 0.87769303543,
+        "ci_high": 0.915260864815,
+        "test_errors": 102
+      },
+      "linreg": {
+        "family": "single: linear regression, thr. 0.5",
+        "train_acc": 0.797,
+        "test_acc": 0.817,
+        "ci_low": 0.791836676289,
+        "ci_high": 0.839737158831,
+        "test_errors": 183
+      },
+      "hard_vote": {
+        "family": "ensemble: majority vote of the 3",
+        "train_acc": 0.846,
+        "test_acc": 0.864,
+        "ci_low": 0.841356184372,
+        "ci_high": 0.88385793545,
+        "test_errors": 136
+      },
+      "stack_in_sample": {
+        "family": "ensemble: stacking, in-sample (provided)",
+        "train_acc": 0.892,
+        "test_acc": 0.898,
+        "ci_low": 0.87769303543,
+        "ci_high": 0.915260864815,
+        "test_errors": 102
+      },
+      "stack_oof": {
+        "family": "ensemble: stacking, out-of-fold (fixed)",
+        "train_acc": 0.894,
+        "test_acc": 0.897,
+        "ci_low": 0.876616363768,
+        "ci_high": 0.914345189995,
+        "test_errors": 103
+      },
+      "bagging": {
+        "family": "ensemble: bagging (defaults)",
+        "train_acc": 0.99,
+        "test_acc": 0.886,
+        "ci_low": 0.864807399546,
+        "ci_high": 0.904238342903,
+        "test_errors": 114
+      },
+      "random_forest": {
+        "family": "ensemble: random forest (defaults)",
+        "train_acc": 1.0,
+        "test_acc": 0.904,
+        "ci_low": 0.884164879242,
+        "ci_high": 0.920743099902,
+        "test_errors": 96
+      },
+      "adaboost": {
+        "family": "ensemble: AdaBoost (defaults)",
+        "train_acc": 0.832,
+        "test_acc": 0.832,
+        "ci_low": 0.80756697912,
+        "ci_high": 0.853892053246,
+        "test_errors": 168
+      },
+      "gradient_boosting": {
+        "family": "ensemble: gradient boosting (defaults)",
+        "train_acc": 0.958,
+        "test_acc": 0.902,
+        "ci_low": 0.882005297701,
+        "ci_high": 0.918917988477,
+        "test_errors": 98
+      }
+    },
+    "oof_cv_accuracy_of_base_learners": {
+      "tree": 0.824,
+      "svm": 0.875,
+      "linreg": 0.797
+    },
+    "best_single_by_oof_cv": "svm",
+    "mcnemar_stack_oof_vs_best_single": {
+      "stack_only_right": 2,
+      "best_single_only_right": 3,
+      "p": 1.0
+    },
+    "sklearn_crosscheck": {
+      "out-of-fold matrix == sklearn cross_val_predict": true,
+      "test meta-features == StackingClassifier.transform": true,
+      "test predictions   == StackingClassifier.predict": true,
+      "test accuracy      == StackingClassifier.score": true
+    },
+    "stack_agreement_with_svm": 0.995
+  },
+  "replicates": {
+    "n_datasets": 50,
+    "seeds": [
+      1000,
+      1001,
+      1002,
+      1003,
+      1004,
+      1005,
+      1006,
+      1007,
+      1008,
+      1009,
+      1010,
+      1011,
+      1012,
+      1013,
+      1014,
+      1015,
+      1016,
+      1017,
+      1018,
+      1019,
+      1020,
+      1021,
+      1022,
+      1023,
+      1024,
+      1025,
+      1026,
+      1027,
+      1028,
+      1029,
+      1030,
+      1031,
+      1032,
+      1033,
+      1034,
+      1035,
+      1036,
+      1037,
+      1038,
+      1039,
+      1040,
+      1041,
+      1042,
+      1043,
+      1044,
+      1045,
+      1046,
+      1047,
+      1048,
+      1049
+    ],
+    "table": {
+      "tree": {
+        "mean_test_acc": 0.93628,
+        "std_across_datasets": 0.044439383159,
+        "mean_diff": -0.01862,
+        "ci_low": -0.024281822433,
+        "ci_high": -0.012958177567,
+        "wins": 1,
+        "ties": 7,
+        "losses": 42
+      },
+      "svm": {
+        "mean_test_acc": 0.95488,
+        "std_across_datasets": 0.033485689907,
+        "mean_diff": -2e-05,
+        "ci_low": -0.000362049709,
+        "ci_high": 0.000322049709,
+        "wins": 3,
+        "ties": 44,
+        "losses": 3
+      },
+      "linreg": {
+        "mean_test_acc": 0.93594,
+        "std_across_datasets": 0.043806350299,
+        "mean_diff": -0.01896,
+        "ci_low": -0.023310771826,
+        "ci_high": -0.014609228174,
+        "wins": 1,
+        "ties": 5,
+        "losses": 44
+      },
+      "hard_vote": {
+        "mean_test_acc": 0.94914,
+        "std_across_datasets": 0.0377964527,
+        "mean_diff": -0.00576,
+        "ci_low": -0.007747769928,
+        "ci_high": -0.003772230072,
+        "wins": 3,
+        "ties": 9,
+        "losses": 38
+      },
+      "stack_in_sample": {
+        "mean_test_acc": 0.95366,
+        "std_across_datasets": 0.034518619643,
+        "mean_diff": -0.00124,
+        "ci_low": -0.002610269423,
+        "ci_high": 0.000130269423,
+        "wins": 8,
+        "ties": 20,
+        "losses": 22
+      },
+      "stack_oof": {
+        "mean_test_acc": 0.95522,
+        "std_across_datasets": 0.033573732444,
+        "mean_diff": 0.00032,
+        "ci_low": -0.000572156076,
+        "ci_high": 0.001212156076,
+        "wins": 7,
+        "ties": 38,
+        "losses": 5
+      },
+      "bagging": {
+        "mean_test_acc": 0.95164,
+        "std_across_datasets": 0.033260112779,
+        "mean_diff": -0.00326,
+        "ci_low": -0.006427186544,
+        "ci_high": -9.2813456e-05,
+        "wins": 17,
+        "ties": 1,
+        "losses": 32
+      },
+      "random_forest": {
+        "mean_test_acc": 0.95768,
+        "std_across_datasets": 0.031382069494,
+        "mean_diff": 0.00278,
+        "ci_low": 0.000107025967,
+        "ci_high": 0.005452974033,
+        "wins": 29,
+        "ties": 4,
+        "losses": 17
+      },
+      "adaboost": {
+        "mean_test_acc": 0.94114,
+        "std_across_datasets": 0.043367442881,
+        "mean_diff": -0.01376,
+        "ci_low": -0.017885026247,
+        "ci_high": -0.009634973753,
+        "wins": 4,
+        "ties": 1,
+        "losses": 45
+      },
+      "gradient_boosting": {
+        "mean_test_acc": 0.95418,
+        "std_across_datasets": 0.03254553482,
+        "mean_diff": -0.00072,
+        "ci_low": -0.003081791411,
+        "ci_high": 0.001641791411,
+        "wins": 20,
+        "ties": 3,
+        "losses": 27
+      }
+    },
+    "stack_oof_minus_stack_in_sample": {
+      "mean_diff": 0.00156,
+      "ci_low": 0.000365020655,
+      "ci_high": 0.002754979345,
+      "wins": 22,
+      "ties": 23,
+      "losses": 5,
+      "sign_test_p": 0.001513719559
+    },
+    "best_single_counts": {
+      "svm": 42,
+      "tree": 6,
+      "linreg": 2
+    }
+  },
+  "stress_test_unpruned_tree": {
+    "fixed_split_test_acc": {
+      "tree": 0.838,
+      "svm": 0.898,
+      "linreg": 0.817,
+      "stack_in_sample": 0.838,
+      "stack_oof": 0.898
+    },
+    "mean_test_acc_over_datasets": {
+      "tree": 0.93566,
+      "svm": 0.95488,
+      "linreg": 0.93594,
+      "stack_in_sample": 0.93566,
+      "stack_oof": 0.95468
+    },
+    "oof_minus_in_sample": {
+      "mean_diff": 0.01902,
+      "ci_low": 0.014678888405,
+      "ci_high": 0.023361111595,
+      "wins": 46,
+      "ties": 3,
+      "losses": 1
+    }
+  }
+}
